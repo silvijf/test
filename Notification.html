@@ -1,0 +1,11 @@
+<html><head></head><body>
+<button>click</button>
+<script>
+    const button = document.querySelector("button")
+    button.addEventListener("click", () => {
+        Notification.requestPermission().then(perm => {
+            console.log(perm)
+            const notification = new Notification("Notification", {body: "hi"})
+        })
+    })
+</script></body></html>
