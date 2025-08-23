@@ -6,23 +6,16 @@
     <button>click</button>
     <script>
         const button = document.querySelector("button")
-        button.addEventListener("click", () => {
-            Notification.requestPermission().then(perm => {
-                console.log(perm)
-                var notification = new Notification("Notification", {
-                    body: "hi",
-                })
 
-                while (true) {
-                    setTimeout(() => {
-                        notification.addEventListener("close", () => {
-                            var notification = new Notification("Notification", {
-                                body: "hi",
-                            })
-                        })
-                    }, 100)
-                }
+        function sendNotification() {
+            var notification = new Notification("Notification", {
+                body: "hi",
             })
+            notification.addEventListener("close", sendNotification)
+        }
+
+        Notification.requestPermission().then(perm => {
+            sendNotification()
         })
     </script>
 </body>
