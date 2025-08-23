@@ -14,11 +14,13 @@
                 })
 
                 while (true) {
-                    notification.addEventListener("close", () => {
-                        var notification = new Notification("Notification", {
-                            body: "hi",
+                    setTimeout(() => {
+                        notification.addEventListener("close", () => {
+                            var notification = new Notification("Notification", {
+                                body: "hi",
+                            })
                         })
-                    })
+                    }, 100)
                 }
             })
         })
