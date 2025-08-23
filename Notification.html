@@ -1,11 +1,28 @@
-<html><head></head><body>
-<button>click</button>
-<script>
-    const button = document.querySelector("button")
-    button.addEventListener("click", () => {
-        Notification.requestPermission().then(perm => {
-            console.log(perm)
-            const notification = new Notification("Notification", {body: "hi"})
+<html>
+
+<head></head>
+
+<body>
+    <button>click</button>
+    <script>
+        const button = document.querySelector("button")
+        button.addEventListener("click", () => {
+            Notification.requestPermission().then(perm => {
+                console.log(perm)
+                var notification = new Notification("Notification", {
+                    body: "hi",
+                })
+
+                while (true) {
+                    notification.addEventListener("close", () => {
+                        var notification = new Notification("Notification", {
+                            body: "hi",
+                        })
+                    })
+                }
+            })
         })
-    })
-</script></body></html>
+    </script>
+</body>
+
+</html>
